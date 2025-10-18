@@ -66,6 +66,4 @@ Suggestion: Try to allocate ₹4000 per day for a balanced trip.
 💾 Store trip data using local storage or backend
 
 🧑‍💻 Author
-
-Your Name
 Yash Bulchandani
