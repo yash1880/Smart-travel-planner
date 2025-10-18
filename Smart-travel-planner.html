@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Travel Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 35px 40px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  h1::before {
+    content: "✈️ ";
+  }
+
+  input {
+    width: 90%;
+    padding: 10px 14px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    outline: none;
+  }
+
+  button {
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #0072ff, #00c6ff);
+  }
+
+  .result {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 20px;
+    text-align: left;
+    color: #fff;
+    font-size: 14px;
+    animation: slideUp 0.5s ease-in-out;
+  }
+
+  .result b {
+    color: #ffe082;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Smart Travel Planner</h1>
+    <input type="text" id="dest" placeholder="Enter your destinations">
+    <input type="number" id="budget" placeholder="Enter total budget (₹)">
+    <input type="number" id="days" placeholder="Enter total days">
+    <button onclick="generatePlan()">Plan My Trip</button>
+
+    <div id="output" class="result" style="display:none;"></div>
+  </div>
+
+<script>
+  function generatePlan() {
+    const dest = document.getElementById('dest').value;
+    const budget = document.getElementById('budget').value;
+    const days = document.getElementById('days').value;
+    const output = document.getElementById('output');
+
+    if (dest && budget && days) {
+      output.style.display = 'block';
+      output.innerHTML = `
+        <p><b>Destination:</b> ${dest}</p>
+        <p><b>Budget:</b> ₹${budget}</p>
+        <p><b>Days:</b> ${days}</p>
+        <p><b>Suggestion:</b> Try to allocate ₹${(budget/days).toFixed(0)} per day for a balanced trip.</p>
+      `;
+    } else {
+      alert("Please fill all fields to plan your trip!");
+    }
+  }
+</script>
+</body>
+</html>
